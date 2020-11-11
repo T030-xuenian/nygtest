@@ -1,0 +1,14 @@
+server:
+  port: 8711
+eureka:
+  instance:
+    hostname: ${spring.cloud.client.ip-address}
+    instance-id: ${eureka.instance.hostname}:${server.port}
+    preferIpAddress: true      #指定通过IP注册,一般服务集群时配置,需要ip-address参数一起设置(保证hostName和ip-address一样)，以免eureka管理页面出现不可用分片提示信息(unavailable-replicas),服务的注册默认是通过hostName注册的，当判断注册的hostName和服务
+    ip-address: ${EUREKA_IP:${eureka.instance.hostname}} #强制指定eureka的ip地址
+  client:
+    service-url:
+#      defaultZone: http://${eureka.instance.hostname}:8711/eureka/
+      defaultZone: http://${eureka.instance.hostname}:8711/eureka/,http://${eureka.instance.hostname}:8712/eureka/,http://${eureka.instance.hostname}:8713/eureka/
+    fetch-registry: true        #集群时需要强制手动指定，fetch-registry、register-with-eureka都需要设置为true
+    register-with-eureka: true  #集群时需要强制手动指定，fetch-registry、register-with-eureka都需要设置为true
