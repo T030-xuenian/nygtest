@@ -18,6 +18,7 @@ public class TestController {
 
     @RequestMapping(value="/ribbon-consumer",method= RequestMethod.GET)
     public String helloConsumer() {
+
         return restTemplate.getForEntity("http://127.0.0.1:8193/system/getAllUser", String.class).getBody();
     }
 
