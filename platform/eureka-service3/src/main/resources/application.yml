@@ -1,3 +1,6 @@
+spring:
+  application:
+    name: eureka
 server:
   port: 8713
 eureka:
@@ -10,6 +13,6 @@ eureka:
   client:
     service-url:
 #      defaultZone: http://${eureka.instance.hostname}:8713/eureka/
-      defaultZone: http://${eureka.instance.hostname}:8711/eureka/,http://${eureka.instance.hostname}:8712/eureka/,http://${eureka.instance.hostname}:8713/eureka/
+      defaultZone: http://${eureka.instance.hostname}:8711/eureka/,http://${eureka.instance.hostname}:8712/eureka/
     fetch-registry: true        #集群时需要强制手动指定，fetch-registry、register-with-eureka都需要设置为true
     register-with-eureka: true  #集群时需要强制手动指定，fetch-registry、register-with-eureka都需要设置为true

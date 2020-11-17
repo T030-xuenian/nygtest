@@ -35,7 +35,7 @@ public class RequestFilter extends ZuulFilter {
     @Override
     public Object run() throws ZuulException {
         RequestContext ctx = RequestContext.getCurrentContext();
-        ctx.addZuulRequestHeader("Authorization","Bearer eyJhbGciOiJIUzUxMiJ9.eyJ0b2tlbktleSI6InRva2VuS2V5IiwiaXNzIjoidHJhbnNmYXIiLCJ1c2VyTmFtZSI6ImRhZ2wiLCJleHAiOjE2MDUzMzcxNTgsInVzZXJJZCI6bnVsbCwiaWF0IjoxNjA1MjUwNzU4fQ.y3FH3V-dgKXyNjTG3uOd3o3zM0hpVPrudtfex4xgjH61NWoaxL9daBrP17uPGnrYlOPegY4ROv415N8go4Dv3w");
+        ctx.addZuulRequestHeader("Authorization","Bearer eyJhbGciOiJIUzUxMiJ9.eyJ0b2tlbktleSI6InRva2VuS2V5IiwiaXNzIjoidHJhbnNmYXIiLCJ1c2VyTmFtZSI6ImRhZ2wiLCJleHAiOjE2MDU1NzYxODcsInVzZXJJZCI6bnVsbCwiaWF0IjoxNjA1NDg5Nzg3fQ.QpCJBXFsWo0YgUHbEJvsa26syduMcJYDLkuPjw72wmOi6GsoqkchaZe_4AAXXaiIfJm26k1U3Kywbievx0pckQ");
         ctx.addZuulRequestHeader("routePrivacy","gateway");
         return null;
     }

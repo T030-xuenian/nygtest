@@ -1,14 +1,18 @@
+spring:
+  application:
+    name: eureka
 server:
   port: 8711
 eureka:
   instance:
     hostname: ${spring.cloud.client.ip-address}
+#    hostname: eureka-service3
     instance-id: ${eureka.instance.hostname}:${server.port}
-    preferIpAddress: true      #Ö¸¶¨Í¨¹ıIP×¢²á,Ò»°ã·şÎñ¼¯ÈºÊ±ÅäÖÃ,ĞèÒªip-address²ÎÊıÒ»ÆğÉèÖÃ(±£Ö¤hostNameºÍip-addressÒ»Ñù)£¬ÒÔÃâeureka¹ÜÀíÒ³Ãæ³öÏÖ²»¿ÉÓÃ·ÖÆ¬ÌáÊ¾ĞÅÏ¢(unavailable-replicas),·şÎñµÄ×¢²áÄ¬ÈÏÊÇÍ¨¹ıhostName×¢²áµÄ£¬µ±ÅĞ¶Ï×¢²áµÄhostNameºÍ·şÎñ
-    ip-address: ${EUREKA_IP:${eureka.instance.hostname}} #Ç¿ÖÆÖ¸¶¨eurekaµÄipµØÖ·
+    preferIpAddress: true      #æŒ‡å®šé€šè¿‡IPæ³¨å†Œ,ä¸€èˆ¬æœåŠ¡é›†ç¾¤æ—¶é…ç½®,éœ€è¦ip-addresså‚æ•°ä¸€èµ·è®¾ç½®(ä¿è¯hostNameå’Œip-addressä¸€æ ·)ï¼Œä»¥å…eurekaç®¡ç†é¡µé¢å‡ºç°ä¸å¯ç”¨åˆ†ç‰‡æç¤ºä¿¡æ¯(unavailable-replicas),æœåŠ¡çš„æ³¨å†Œé»˜è®¤æ˜¯é€šè¿‡hostNameæ³¨å†Œçš„ï¼Œå½“åˆ¤æ–­æ³¨å†Œçš„hostNameå’ŒæœåŠ¡
+    ip-address: ${EUREKA_IP:${eureka.instance.hostname}} #å¼ºåˆ¶æŒ‡å®šeurekaçš„ipåœ°å€
   client:
     service-url:
-#      defaultZone: http://${eureka.instance.hostname}:8711/eureka/
-      defaultZone: http://${eureka.instance.hostname}:8711/eureka/,http://${eureka.instance.hostname}:8712/eureka/,http://${eureka.instance.hostname}:8713/eureka/
-    fetch-registry: true        #¼¯ÈºÊ±ĞèÒªÇ¿ÖÆÊÖ¶¯Ö¸¶¨£¬fetch-registry¡¢register-with-eureka¶¼ĞèÒªÉèÖÃÎªtrue
-    register-with-eureka: true  #¼¯ÈºÊ±ĞèÒªÇ¿ÖÆÊÖ¶¯Ö¸¶¨£¬fetch-registry¡¢register-with-eureka¶¼ĞèÒªÉèÖÃÎªtrue
+#      defaultZone: http://${eureka.instance.hostname}:8713/eureka/
+      defaultZone: http://${eureka.instance.hostname}:8712/eureka/,http://${eureka.instance.hostname}:8713/eureka/
+    fetch-registry: true        #é›†ç¾¤æ—¶éœ€è¦å¼ºåˆ¶æ‰‹åŠ¨æŒ‡å®šï¼Œfetch-registryã€register-with-eurekaéƒ½éœ€è¦è®¾ç½®ä¸ºtrue
+    register-with-eureka: true  #é›†ç¾¤æ—¶éœ€è¦å¼ºåˆ¶æ‰‹åŠ¨æŒ‡å®šï¼Œfetch-registryã€register-with-eurekaéƒ½éœ€è¦è®¾ç½®ä¸ºtrue

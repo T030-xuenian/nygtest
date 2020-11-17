@@ -1,10 +1,26 @@
 package org.rising.test_customer.web;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.rising.test_customer.bean.User;
+import org.rising.test_customer.service.UserFeignClient;
+import org.rising.web.utils.WebResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: xue nian
@@ -14,12 +30,12 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class TestController {
     @Autowired
-    private RestTemplate restTemplate;
+    private UserFeignClient feignClient;
 
-    @RequestMapping(value="/ribbon-consumer",method= RequestMethod.GET)
-    public String helloConsumer() {
+    @RequestMapping(value="/ribbon-consumer",method=RequestMethod.GET)
+    public WebResult helloConsumer() {
+        WebResult allUser = feignClient.findAllUser();
 
-        return restTemplate.getForEntity("http://127.0.0.1:8193/system/getAllUser", String.class).getBody();
+        return allUser;
     }
-
 }

@@ -5,8 +5,6 @@ import org.rising.system.dbBean.User;
 import org.rising.system.dto.login.LoginReturnData;
 import org.rising.system.service.UserService;
 import org.rising.web.exception.BusinessException;
-import org.rising.web.security.jwt.JwtUtil;
-import org.rising.web.security.jwt.UserContextDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,13 +30,13 @@ public class UserServiceImpl implements UserService {
         }else if(user.getDeleted()){
             throw new BusinessException("该用户已经被禁用!");
         }
-        UserContextDto userContext = new UserContextDto();
-        userContext.setUserName(userName);
-        userContext.setTokenKey("tokenKey");
-        String token = JwtUtil.getToken(userContext);
+//        UserContextDto userContext = new UserContextDto();
+//        userContext.setUserName(userName);
+//        userContext.setTokenKey("tokenKey");
+//        String token = JwtUtil.getToken(userContext);
         LoginReturnData loginReturnData = new LoginReturnData();
         loginReturnData.setUserName(userName);
-        loginReturnData.setToken(token);
+//        loginReturnData.setToken(token);
         return loginReturnData ;
     }
 

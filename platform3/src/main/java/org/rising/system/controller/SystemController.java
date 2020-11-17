@@ -35,7 +35,7 @@ public class SystemController{
     }
 
     @ApiOperation(value = "查询所有用户测试用的")
-    @RequestMapping("getAllUser")
+    @PostMapping("getAllUser")
     public WebResult<User> findAll() throws BusinessException {
         List<User> all = userService.findAll();
         return WebUtils.success(all);
