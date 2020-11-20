@@ -1,6 +1,5 @@
 package org.rising.system.controller;
 
-import org.rising.system.dto.login.LoginReturnData;
 import org.rising.system.dto.login.UserDto;
 import org.rising.system.dbBean.User;
 import org.rising.system.service.impl.UserServiceImpl;
@@ -30,8 +29,8 @@ public class SystemController{
     @ApiOperation(value = "登陆")
     @PostMapping("login")
     public WebResult<User> login(@RequestBody UserDto userDto){
-        LoginReturnData login = userService.login(userDto.getUserName(), userDto.getPassword());
-        return WebUtils.success(login);
+        User user = userService.login(userDto.getUserName(), userDto.getPassword());
+        return WebUtils.success(user);
     }
 
     @ApiOperation(value = "查询所有用户测试用的")

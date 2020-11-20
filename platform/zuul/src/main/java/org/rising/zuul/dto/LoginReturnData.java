@@ -1,4 +1,4 @@
-package org.rising.system.dto.login;
+package org.rising.zuul.dto;
 
 import lombok.Data;
 

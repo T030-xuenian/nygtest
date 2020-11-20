@@ -2,7 +2,6 @@ package org.rising.system.service.impl;
 
 import org.rising.system.dao.UserDao;
 import org.rising.system.dbBean.User;
-import org.rising.system.dto.login.LoginReturnData;
 import org.rising.system.service.UserService;
 import org.rising.web.exception.BusinessException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,7 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
-    public LoginReturnData login(String userName, String pwd){
+    public User login(String userName, String pwd){
         User user = userDao.findByUserName(userName);
         if(user==null){
             throw new BusinessException("用户没有找到！");
@@ -30,14 +29,7 @@ public class UserServiceImpl implements UserService {
         }else if(user.getDeleted()){
             throw new BusinessException("该用户已经被禁用!");
         }
-//        UserContextDto userContext = new UserContextDto();
-//        userContext.setUserName(userName);
-//        userContext.setTokenKey("tokenKey");
-//        String token = JwtUtil.getToken(userContext);
-        LoginReturnData loginReturnData = new LoginReturnData();
-        loginReturnData.setUserName(userName);
-//        loginReturnData.setToken(token);
-        return loginReturnData ;
+        return user ;
     }
 
     public List<User> findAll(){

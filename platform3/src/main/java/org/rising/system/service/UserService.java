@@ -1,6 +1,6 @@
 package org.rising.system.service;
 
-import org.rising.system.dto.login.LoginReturnData;
+import org.rising.system.dbBean.User;
 
 /**
  * @Author: xue nian
@@ -8,5 +8,5 @@ import org.rising.system.dto.login.LoginReturnData;
  * @Description:
  */
 public interface UserService {
-    LoginReturnData login(String userName, String pwd);
+    User login(String userName, String pwd);
 }
