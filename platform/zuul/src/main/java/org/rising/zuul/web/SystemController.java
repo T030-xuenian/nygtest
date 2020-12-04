@@ -1,5 +1,7 @@
 package org.rising.zuul.web;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.rising.web.security.jwt.JwtUtil;
 import org.rising.web.security.jwt.UserContextDto;
 import org.rising.web.utils.WebResult;
@@ -20,11 +22,13 @@ import java.util.Map;
  * @DateTime: 2020/11/20 8:48
  * @Description:
  */
+@Api(value = "系统消费者 ",description = "登录")
 @RestController
 public class SystemController {
 
     @Autowired
     private UserFeignClient feignClient;
+    @ApiOperation("登录")
     @PostMapping("login")
     public WebResult login(@RequestBody UserDto userDto){
         WebResult login = feignClient.login(userDto);
@@ -39,5 +43,12 @@ public class SystemController {
         loginReturnData.setUserName(userContextDto.getUserName());
         return WebUtils.success(loginReturnData);
     }
+
+    @ApiOperation("获取所有用户信息")
+    @PostMapping("getAllUser")
+    public WebResult getAllUser(){
+        return feignClient.findAllUser();
+    }
+
 
 }
