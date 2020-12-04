@@ -9,4 +9,5 @@ import org.rising.system.dbBean.User;
  */
 public interface UserService {
     User login(String userName, String pwd);
+    User addUser(User baseBean);
 }

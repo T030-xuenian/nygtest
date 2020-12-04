@@ -2,9 +2,13 @@ package org.rising.system.dbBean;
 
 import org.rising.system.DBBaseBean;
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import java.util.Date;
 
 /**
  * @Author: xue nian
@@ -13,6 +17,7 @@ import javax.persistence.Entity;
  */
 @Data
 @Entity(name = "tb_user")
+@EntityListeners(AuditingEntityListener.class)
 public class User extends DBBaseBean {
 
     @Column(name = "userName",unique=true,nullable = false , length = 100)
@@ -30,4 +35,7 @@ public class User extends DBBaseBean {
     @Column(name = "personnel_id")
     private String personnelId;
 
+    @CreatedDate
+    @Column(name = "created_date")
+    private Date createDate;
 }

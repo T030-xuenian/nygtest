@@ -11,6 +11,7 @@ import org.rising.web.utils.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.beans.Transient;
 import java.util.List;
 
 /**
@@ -26,7 +27,6 @@ public class SystemController{
     @Autowired
     private UserServiceImpl userService;
 
-    @ApiOperation(value = "登陆")
     @PostMapping("login")
     public WebResult<User> login(@RequestBody UserDto userDto){
         User user = userService.login(userDto.getUserName(), userDto.getPassword());
@@ -38,6 +38,12 @@ public class SystemController{
     public WebResult<User> findAll() throws BusinessException {
         List<User> all = userService.findAll();
         return WebUtils.success(all);
+    }
+
+    @ApiOperation(value = "添加用户")
+    @PostMapping("addUser")
+    public WebResult addUser(@RequestBody User user){
+        return WebUtils.success( userService.addUser(user));
     }
 
 }

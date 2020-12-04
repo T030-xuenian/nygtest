@@ -32,6 +32,13 @@ public class UserServiceImpl implements UserService {
         return user ;
     }
 
+    @Override
+    public User addUser(User user) {
+        user.setCurrentTenantId("8b9703d4-5a2b-4b8a-a508-b55833563c8b");
+        user.setPersonnelId("01b9df16-ae9a-4133-8005-56e59a33fb60");
+        return userDao.save(user);
+    }
+
     public List<User> findAll(){
         return userDao.findAll();
     }
