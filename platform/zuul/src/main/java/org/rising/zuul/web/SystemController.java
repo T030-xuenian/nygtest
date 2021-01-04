@@ -43,7 +43,6 @@ public class SystemController {
         loginReturnData.setUserName(userContextDto.getUserName());
         return WebUtils.success(loginReturnData);
     }
-
     @ApiOperation("获取所有用户信息")
     @PostMapping("getAllUser")
     public WebResult getAllUser(){
