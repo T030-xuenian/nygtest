@@ -18,12 +18,24 @@ public class WebResult<T> {
         this.code = code;
         this.message = message;
     }
-    public WebResult(int code, String message, T data) {
+    public WebResult(int code, String message,String type) {
         this.code = code;
         this.message = message;
-        this.data = data;
+        this.type = type;
+    }
+    public WebResult(int code, String message, T result) {
+        this.code = code;
+        this.message = message;
+        this.result = result;
+    }
+    public WebResult(int code,String type,String message,T result){
+        this.code = code;
+        this.message = message;
+        this.result = result;
+        this.type = type;
     }
     private int code ;
+    private String type ="success";
     private String message;
-    private T data;
+    private T result;
 }

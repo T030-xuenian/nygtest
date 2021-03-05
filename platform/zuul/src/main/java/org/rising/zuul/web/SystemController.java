@@ -32,7 +32,8 @@ public class SystemController {
     @PostMapping("login")
     public WebResult login(@RequestBody UserDto userDto){
         WebResult login = feignClient.login(userDto);
-        Map map =(Map) login.getData();
+        if(login.getCode()!=0) return login;
+        Map map =(Map) login.getResult();
         UserContextDto userContextDto = new UserContextDto();
         userContextDto.setTokenKey("tokenKey");//TODO: 此处应该使用uuid 但是先写死 等用了redis之后 再完善
         userContextDto.setUserId(map.get("id").toString());

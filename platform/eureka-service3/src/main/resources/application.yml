@@ -1,6 +1,13 @@
 spring:
   application:
     name: eureka
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+      exclude: WEB-INF/**
+    freemarker:
+      cache: false
 server:
   port: 8713
 eureka:
@@ -14,5 +21,10 @@ eureka:
     service-url:
 #      defaultZone: http://${eureka.instance.hostname}:8713/eureka/
       defaultZone: http://${eureka.instance.hostname}:8711/eureka/,http://${eureka.instance.hostname}:8712/eureka/
-    fetch-registry: true        #集群时需要强制手动指定，fetch-registry、register-with-eureka都需要设置为true
+    fetch-registry:   true        #集群时需要强制手动指定，fetch-registry、register-with-eureka都需要设置为true
     register-with-eureka: true  #集群时需要强制手动指定，fetch-registry、register-with-eureka都需要设置为true
+#  server:
+#    #关闭自我保护机制，保证不可用服务被及时剔除
+#    enable-self-preservation: false
+#    #清理无效节点的时间间隔,默认60000毫秒,即60秒 (此处时间间隔设置为2s)
+#    eviction-interval-timer-in-ms: 2000

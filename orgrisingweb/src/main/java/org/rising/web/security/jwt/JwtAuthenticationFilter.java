@@ -62,7 +62,7 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
             JwtAuthentication.authentication(userContext);
             chain.doFilter(request, response);
         }catch (ExpiredJwtException eje){
-             WebUtils.sendMessage(response,8002,"授权已过期，请重新授权!");
+             WebUtils.sendWarningMessage(response,8002,"授权已过期，请重新授权!");
         }catch (Exception e){
             WebUtils.sendErrorMessage(response,"无效的凭证！请求失败！");
         }
