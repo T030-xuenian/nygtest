@@ -33,8 +33,6 @@ import static org.apache.logging.log4j.message.MapMessage.MapFormat.JSON;
 @Aspect
 @Component
 public class SyslogAspect {
-    @Autowired
-    private MessageConfig messageConfig;
 
     @Pointcut("@annotation(org.rising.aop.syslog.Syslog)")
     public void logPointCut(){

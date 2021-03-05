@@ -10,8 +10,6 @@ import org.rising.web.utils.WebResult;
 import org.rising.web.utils.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.beans.Transient;
 import java.util.List;
 
 /**
