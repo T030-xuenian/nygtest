@@ -65,6 +65,29 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>org.rising.web</groupId>
+            <artifactId>org-rising-web</artifactId>
+            <version>1.01</version>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework</groupId>-->
+            <!--<artifactId>spring-tx</artifactId>-->
+        <!--</dependency>-->
+
+        <!--分布式锁-->
+        <!--<dependency>-->
+            <!--<groupId>com.codingapi.txlcn</groupId>-->
+            <!--<artifactId>txlcn-tc</artifactId>-->
+            <!--<version>5.0.2.RELEASE</version>-->
+            <!--<scope>compile</scope>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>com.codingapi.txlcn</groupId>
+            <artifactId>txlcn-txmsg-netty</artifactId>
+            <version>5.0.2.RELEASE</version>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>

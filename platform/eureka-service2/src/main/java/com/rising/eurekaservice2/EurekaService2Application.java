@@ -1,4 +1,4 @@
-package org.rising.eurekaservice2;
+package com.rising.eurekaservice2;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

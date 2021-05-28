@@ -1,6 +1,6 @@
 spring:
   application:
-    name: eureka
+    name: eureka-server
   devtools:
     restart:
       enabled: true
@@ -12,14 +12,16 @@ server:
   port: 8711
 eureka:
   instance:
-    hostname: ${spring.cloud.client.ip-address}
+#    hostname: ${spring.cloud.client.ip-address}
+    hostname: eureka-service3
     instance-id: ${eureka.instance.hostname}:${server.port}
     preferIpAddress: true
     ip-address: ${EUREKA_IP:${eureka.instance.hostname}}
   client:
     service-url:
-      defaultZone: http://${eureka.instance.hostname}:8712/eureka/,http://${eureka.instance.hostname}:8713/eureka/
-    fetch-registry: true
+#      defaultZone: http://${eureka.instance.hostname}:8713/eureka/
+      defaultZone: http://eureka-service2:8712/eureka/,http://eureka-service3:8713/eureka/
+    fetch-registry:   true
     register-with-eureka: true
 #  server:
 #    enable-self-preservation: false

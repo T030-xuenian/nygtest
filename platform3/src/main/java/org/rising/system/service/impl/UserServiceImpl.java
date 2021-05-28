@@ -1,12 +1,17 @@
 package org.rising.system.service.impl;
 
+import com.codingapi.txlcn.tc.annotation.LcnTransaction;
+import org.rising.system.dao.TestDao;
 import org.rising.system.dao.UserDao;
+import org.rising.system.dbBean.Test;
 import org.rising.system.dbBean.User;
+import org.rising.system.dto.TestData;
 import org.rising.system.service.UserService;
 import org.rising.web.exception.BusinessException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
@@ -18,7 +23,8 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
-
+    @Autowired
+    private TestDao testDao;
     @Override
     public User login(String userName, String pwd){
         User user = userDao.findByUserName(userName);
@@ -32,11 +38,23 @@ public class UserServiceImpl implements UserService {
         return user ;
     }
 
+    @LcnTransaction
+    @Transactional
     @Override
     public User addUser(User user) {
         user.setCurrentTenantId("8b9703d4-5a2b-4b8a-a508-b55833563c8b");
         user.setPersonnelId("01b9df16-ae9a-4133-8005-56e59a33fb60");
         return userDao.save(user);
+    }
+    @LcnTransaction
+    @Transactional
+    @Override
+    public Test addTestData(TestData testData) {
+        Test test = new Test();
+        test.setId(testData.getId());
+        test.setName(testData.getName());
+        test.setSex(testData.getSex());
+        return testDao.save(test);
     }
 
     public List<User> findAll(){
