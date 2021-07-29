@@ -1,8 +1,7 @@
 package org.rising.system.controller;
 
-//import com.codingapi.txlcn.tc.annotation.DTXPropagation;
-//import com.codingapi.txlcn.tc.annotation.LcnTransaction;
-//import com.codingapi.txlcn.tc.annotation.TxcTransaction;
+import com.codingapi.txlcn.tc.annotation.DTXPropagation;
+import com.codingapi.txlcn.tc.annotation.TxcTransaction;
 import org.rising.system.dto.TestData;
 import org.rising.system.dto.login.UserDto;
 import org.rising.system.dbBean.User;
@@ -42,12 +41,10 @@ public class SystemController{
     }
     @ApiOperation(value = "添加用户")
     @PostMapping("addUser")
-//    @TxcTransaction(propagation = DTXPropagation.REQUIRED)
     public WebResult addUser(@RequestBody User user){
         return WebUtils.success( userService.addUser(user));
     }
 
-//    @TxcTransaction(propagation = DTXPropagation.REQUIRED)
     @ApiOperation(value = "添加测试数据")
     @PostMapping("addTest")
     public WebResult addTestData(@RequestBody TestData testData){

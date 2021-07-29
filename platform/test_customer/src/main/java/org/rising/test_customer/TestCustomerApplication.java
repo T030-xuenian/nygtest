@@ -1,17 +1,19 @@
 package org.rising.test_customer;
 
-//import com.codingapi.txlcn.tc.config.EnableDistributedTransaction;
+import com.codingapi.txlcn.tc.config.EnableDistributedTransaction;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.web.client.RestTemplate;
 
 
-//@EnableDistributedTransaction
+@EnableDistributedTransaction
 @EnableFeignClients
 @EnableDiscoveryClient
+@EnableJpaAuditing
 @SpringBootApplication(scanBasePackages = {"org.rising.test_customer","org.rising.web"})
 public class TestCustomerApplication {
 

@@ -1,5 +1,8 @@
 package org.rising.test_customer.web;
 
+import com.codingapi.txlcn.tc.annotation.DTXPropagation;
+import com.codingapi.txlcn.tc.annotation.LcnTransaction;
+import com.codingapi.txlcn.tc.annotation.TxcTransaction;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.rising.test_customer.bean.TestData;
@@ -11,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.transaction.Transactional;
 
 /**
  * @Author: xue nian
@@ -28,6 +33,8 @@ public class TestController {
         return feignClient.findAllUser();
     }
 
+    @LcnTransaction
+    @Transactional
     @ApiOperation("事务测试")
     @RequestMapping(value="testSave",method=RequestMethod.GET)
     public WebResult testSave() {
